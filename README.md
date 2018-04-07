@@ -13,5 +13,6 @@ Versions that I used for this tutorial:
 * Upload the ISO image to a datastore on the ESXi server
 * Create a new VM and mount the downloaded image.
 ![Alt text](relative/path/to/img.jpg?raw=true "Title")
-* Start the VM and 
+* Power on the create VM and walkthrough the Centos7 setup
+* Let the installer create an additional user: 'tutorial'
 
