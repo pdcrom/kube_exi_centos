@@ -11,7 +11,7 @@ Versions that I used for this tutorial:
 [Download](https://www.centos.org/download/) a copy of CentOS (I used the Minimal ISO)
 
 * Upload the ISO image to a datastore on the ESXi server
-* Create a new VM and mount the downloaded image.
+* Create a new VM called "CentOS7_tutorial" and mount the downloaded image.
 ![Alt text](relative/path/to/img.jpg?raw=true "Title")
 * Power on the create VM and walkthrough the Centos7 setup
 * Let the installer create an additional user: 'tutorial'
