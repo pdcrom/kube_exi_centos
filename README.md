@@ -43,6 +43,20 @@ Your CentOS building block is ready, power down the VM and go to the next step
 
 ## Provisioning the Kubernetes cluster
 
+The vMs that we are going to use for the cluster will be provisioned with Terraform, using the template VM 'CentOS7_tutorial'
+that we created in the previous step.
+
+Modify 'terraform/esxi_vm/vsphere_vars.tf' with the right values for your vSphere instance.
+Modify 'kube-cluster' with the right values for your environment.
+
+to provision a cluster with a master and a worker node run:
+```
+     terraform init
+     terraform apply
+```
+After execution is complete, you have two VMs:
+* kube-master
+* kube-vm
 
 
 
