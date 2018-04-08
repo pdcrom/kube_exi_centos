@@ -15,4 +15,22 @@ Versions that I used for this tutorial:
 ![Alt text](relative/path/to/img.jpg?raw=true "Title")
 * Power on the create VM and walkthrough the Centos7 setup
 * Let the installer create an additional user: 'tutorial'
+* When the setup finished and the VM is rebooted we are ready for the next step
+
+##  Configuration of the Centos7 VM
+I want to automate the most part of the entire installation, so the only thing we are going to to is to setup an SSH key for the 
+tutorial user we created
+* Login as root on the VM from the vSphere console and lookup its IP Address
+* add the tutorial user to the sudoers:
+     ssh root@<SERVERIP> 'echo "tutorial ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/tutorial'
+* copy the ssh-key for the tutorial user (assume a key exists in ~/.ssh/id_rsa.pub)
+     ./setup_ssh.sh <SERVERIP> tutorial <tutorial password>
+  
+  
+
+
+ 
+
+
+
 
