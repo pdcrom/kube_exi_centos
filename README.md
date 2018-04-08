@@ -29,13 +29,13 @@ tutorial user we created
 ```
      setup_ssh <SERVERIP> tutorial <tutorial password>
 ```  
-* Install VMware tools
+* Install VMware tools and Perl (for terraform deployment tasks)
 ```
-     ssh root@192.168.178.157 yum -y install open-vm-tools
+     ssh root@192.168.178.157 yum -y install open-vm-tools perl
 ```
 * Shutdown the vm
 ```
-     sh root@192.168.178.157 shutdown -h now
+     ssh root@192.168.178.157 shutdown -h now
 ```
 
 
