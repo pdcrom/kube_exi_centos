@@ -31,8 +31,13 @@ tutorial user we created
 ```  
 * Install VMware tools
 ```
-ssh root@192.168.178.157 yum -y install open-vm-tools
+     ssh root@192.168.178.157 yum -y install open-vm-tools
 ```
+* Shutdown the vm
+```
+     sh root@192.168.178.157 shutdown -h now
+```
+
 
 Your CentOS building block is ready, power down the VM and go to the next step
 
