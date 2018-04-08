@@ -20,7 +20,7 @@ Versions that I used for this tutorial:
 ##  Configuration of the Centos7 VM
 I want to automate the most part of the entire installation, so the only thing we are going to to is to setup an SSH key for the 
 tutorial user we created
-* Login as root on the VM from the vSphere console and lookup its IP Address
+* Login as root on the VM from the vSphere console and lookup its IP Address. Exit and continue all steps from your Ubuntu machine
 * add the tutorial user to the sudoers:
 ```
      ssh root@<SERVERIP> 'echo "tutorial ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/tutorial'
@@ -29,6 +29,10 @@ tutorial user we created
 ```
      setup_ssh <SERVERIP> tutorial <tutorial password>
 ```  
+* Install VMware tools
+```
+ssh root@192.168.178.157 yum -y install open-vm-tools
+```
 
 Your CentOS building block is ready, power down the VM and go to the next step
 
