@@ -22,10 +22,12 @@ I want to automate the most part of the entire installation, so the only thing w
 tutorial user we created
 * Login as root on the VM from the vSphere console and lookup its IP Address
 * add the tutorial user to the sudoers:
+```
      ssh root@<SERVERIP> 'echo "tutorial ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/tutorial'
+```
 * copy the ssh-key for the tutorial user (assume a key exists in ~/.ssh/id_rsa.pub)
 ```
-     ./setup_ssh.sh <SERVERIP> tutorial <tutorial password>
+     setup_ssh <SERVERIP> tutorial <tutorial password>
 ```  
   
 
