@@ -29,7 +29,12 @@ tutorial user we created
 ```
      setup_ssh <SERVERIP> tutorial <tutorial password>
 ```  
-  
+
+Your CentOS building block is ready, power down the VM and go to the next step
+
+## Provisioning the Kubernetes cluster
+
+
 
 
  
