@@ -1,0 +1,41 @@
+    - name: add yum repositoru for kubernetes
+      yum_repository:
+        name: kubernetes
+        description: Kubernetes repo
+        baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+#        gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+        gpgkey: https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+    - name: Install kubelet
+      yum: name=kubelet state=installed
+
+    - name: Enable kubelet service
+      service: name=kubelet state=stopped enabled=yes
+
+    - name: Install kubeadm
+      yum: name=kubeadm state=installed
+
+    - name: Install kubectl
+      yum: name=kubectl state=installed
+
+    - name:  pass bridged IPv4 traffic to iptables’ chains.
+      blockinfile:
+        path: /etc/sysctl.conf
+        block: |
+          net.bridge.bridge-nf-call-iptables=1
+          net.bridge.bridge-nf-call-ip6tables=1
+
+    - name: reload systectl.conf
+      shell: sysctl -p
+
+    - name: disable firewalld
+      service: name=firewalld state=stopped enabled=no
+
+    - name: disable swap now
+      shell: swapoff -a
+
+    - name: disable swap forever
+      replace:
+        path: /etc/fstab
+        regexp: '^/dev/mapper/centos-swap'
+        replace: '#/dev/mapper/centos-swap'

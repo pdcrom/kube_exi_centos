@@ -1,0 +1,92 @@
+## create Kubernetes cluster
+
+- name: Create virtual machines
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: /usr/local/bin/python
+  tasks:
+    - name: include vm details
+      include_vars: vm.yaml
+
+    - name: Create a new virtual machine
+      include_tasks: create_vm.yml name="{{ item.key }}"
+      loop: "{{ lookup('dict', vm) }}"
+
+- name: Setup virtual machines
+  hosts:
+    - kube-masters
+    - kube-workers
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: Wait until reachable
+      wait_for_connection:
+       delay: 5
+       timeout: 300
+
+    - name: Install NTP
+      include_tasks: ntp.yml
+
+    - name: Install Docker
+      include_tasks: docker.yml
+
+    - name: Install Kube tools
+      include_tasks: kubernetes.yml
+
+    - name: Install nfs-utils
+      yum: name=nfs-utils state=installed
+
+- name: Install Kubernetes on Master nodes
+  hosts: kube-masters
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: Check if kubernetes already installed on Master
+      stat: path=/etc/kubernetes/admin.conf
+      register: kube_installed
+
+    - name: install kubernetes
+      shell: kubeadm init --pod-network-cidr=10.244.0.0/16
+      when: kube_installed.stat.exists == False
+
+    - name: get token
+      shell: kubeadm token list | awk 'NR>1 { print $1 }'
+      register: token
+
+    - name: create .kube directory
+      file:
+        path: "{{ ansible_env.HOME }}/.kube"
+        state: directory
+
+    - name: copy kubernetes config
+      shell: cp /etc/kubernetes/admin.conf "{{ ansible_env.HOME }}/.kube/config"
+
+    - name: copy config to localhost
+      fetch:
+        src: /etc/kubernetes/admin.conf
+        dest: admin.conf
+        flat: yes
+
+- name: Join workers to cluster
+  hosts: kube-workers
+  gather_facts: no
+  become: yes
+  vars:
+    master: "{{ groups['kube-masters'][0] }}"
+    token: "{{ hostvars[master]['token'].stdout }}"
+
+  tasks:
+    - name: include vm details
+      include_vars: vm.yaml
+
+    - name: Check if workers already joined to Master
+      stat: path=/etc/kubernetes/bootstrap-kubelet.conf
+      register: worker_joined
+
+    - name: Join cluster
+      shell: kubeadm join --discovery-token-unsafe-skip-ca-verification \
+                 --token {{ token }} \
+                {{ vm[master].ip }}:6443
+      when:  worker_joined.stat.exists == False

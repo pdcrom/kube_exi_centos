@@ -1,0 +1,27 @@
+vm:
+   kube-master1:
+      network:  dc30.kube
+      domain:   dc.decromlab.nl
+      ip:       10.0.30.70
+      dns:      10.0.30.1
+      gateway:  10.0.30.1
+      netmask:  255.255.255.0
+      template: CentOS7_tutorial
+
+   kube-worker1:
+      network:  dc30.kube
+      domain:   dc.decromlab.nl
+      ip:       10.0.30.71
+      dns:      10.0.30.1
+      gateway:  10.0.30.1
+      netmask:  255.255.255.0
+      template: CentOS7_tutorial
+
+   kube-worker2:
+      network:  dc30.kube
+      domain:   dc.decromlab.nl
+      ip:       10.0.30.72
+      dns:      10.0.30.1
+      gateway:  10.0.30.1
+      netmask:  255.255.255.0
+      template: CentOS7_tutorial

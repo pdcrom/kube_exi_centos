@@ -1,0 +1,26 @@
+  - name: Install yum-utils
+    yum: name=yum-utils state=installed
+
+  - name: install docker-ce repo
+    shell: yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+  - name: Install Docker
+    yum: name=docker-ce state=installed
+
+  - name: Enable systemd, not cgroup
+    replace:
+      path: /usr/lib/systemd/system/docker.service
+      regexp: 'ExecStart=/usr/bin/dockerd'
+      replace: 'ExecStart=/usr/bin/dockerd --exec-opt native.cgroupdriver=systemd'
+
+  - name: allow insecure access to dockerrepo
+    lineinfile: dest=/etc/docker/daemon.json
+                line="{\"insecure-registries\":[\"dockerrepo:5000\"]}"
+                create=yes
+                state=present
+
+  - name: install docker-ce repo
+    shell: systemctl daemon-reload
+
+  - name: Start docker
+    service: name=docker state=started enabled=yes
