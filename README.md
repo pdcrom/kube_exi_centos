@@ -1,3 +1,5 @@
+*** WORK IN PROGRESS ***
+
 # Bootstrap Kubernetes on ESXi using Centos
 In this tutorial we will be creating a Kubernetes cluster that I am using myself in my homelab. 
 Prerequisites are that you are familier with VMware vSphere and have access to it.
