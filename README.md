@@ -5,9 +5,10 @@ In this tutorial we will be creating a Kubernetes cluster that I am using myself
 Prerequisites are that you are familier with VMware vSphere and have access to it.
 
 Versions that I used for this tutorial:
-* Ubuntu 16.04 virtual machine to execute this tutorial
+* MacBook Pro with OSX 10.13.2 (machine to execute this tutorial)
 * vSphere 6.5
 * CentOS 7 (1708)
+* Kubernetes 1.10.0
 
 ## Create a Centos virtual machine as basis for your kubernetes hosts
 [Download](https://www.centos.org/download/) a copy of CentOS (I used the Minimal ISO)
@@ -17,12 +18,12 @@ Versions that I used for this tutorial:
 ![Alt text](relative/path/to/img.jpg?raw=true "Title")
 * Power on the create VM and walkthrough the Centos7 setup
 * Let the installer create an additional user: 'tutorial'
-* When the setup finished and the VM is rebooted we are ready for the next step
+* When the setup is finished and the VM is rebooted we are ready for the next step
 
 ##  Configuration of the Centos7 VM
 I want to automate the most part of the entire installation, so the only thing we are going to to is to setup an SSH key for the 
 tutorial user we created
-* Login as root on the VM from the vSphere console and lookup its IP Address. Exit and continue all steps from your Ubuntu machine
+* Login as root on the VM from the vSphere console and lookup its IP Address. Exit and continue all steps from your local machine
 * add the tutorial user to the sudoers:
 ```
      ssh root@<SERVERIP> 'echo "tutorial ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/tutorial'
