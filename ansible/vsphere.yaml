@@ -1,6 +1,0 @@
-vsphere:
-  ip:     10.10.10.10
-  user:   administrator@vsphere.local
-  passw:  secret
-  dc:     Datacenter
-  folder: Kubernetes

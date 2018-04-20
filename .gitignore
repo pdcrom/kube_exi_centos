@@ -1,3 +1,8 @@
 _old/*
+test/*
 ansible/.nfs*
+ansible/*.retry
 ansible/vsphere.yaml.paul
+ansible/admin.conf
+ansible/dashboard_token.txt
+*DS_Store*

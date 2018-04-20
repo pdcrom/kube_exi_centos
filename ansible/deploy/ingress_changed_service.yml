@@ -1,0 +1,39 @@
+# Please edit the object below. Lines beginning with a '#' will be ignored,
+# and an empty file will abort the edit. If an error occurs while saving this file will be
+# reopened with the relevant failures.
+#
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: 2018-04-16T17:35:40Z
+  labels:
+    app: nginx-ingress
+    chart: nginx-ingress-0.13.2
+    component: controller
+    heritage: Tiller
+    release: funny-moose
+  name: funny-moose-nginx-ingress-controller
+  namespace: kube-system
+  resourceVersion: "140537"
+  selfLink: /api/v1/namespaces/kube-system/services/funny-moose-nginx-ingress-controller
+  uid: 9541061d-419c-11e8-a18d-005056913b3d
+spec:
+  clusterIP: 10.101.142.131
+  externalTrafficPolicy: Cluster
+  ports:
+  - name: http
+    nodePort: 30080
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 30443
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  selector:
+    app: nginx-ingress
+    component: controller
+    release: funny-moose
+  sessionAffinity: None
+  type: NodePort

@@ -1,0 +1,1 @@
+helm install --namespace kube-system stable/nginx-ingress --set rbac.create=true
