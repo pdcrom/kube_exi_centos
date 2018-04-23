@@ -1,0 +1,47 @@
+---
+- block:
+
+    - name: Gather facts
+      setup:
+          
+    - name: Check if kubernetes already installed on Master
+      stat: path=/etc/kubernetes/admin.conf
+      register: kube_installed
+
+    - name: install kubernetes
+      shell: kubeadm init --pod-network-cidr=10.244.0.0/16
+      register: kube_installed
+      when: not kube_installed.stat.exists
+      
+    - name: create .kube directory
+      file:
+        path: "{{ ansible_env.HOME }}/.kube"
+        state: directory
+
+    - name: copy kubernetes config
+      shell: cp /etc/kubernetes/admin.conf "{{ ansible_env.HOME }}/.kube/config"
+      when: kube_installed.changed
+
+    - name: get token
+      shell: kubeadm token list | awk 'NR>1 { print $1 }'
+      register: token
+      changed_when: false
+  
+    - name: copy deploy directory
+      copy:
+        src: ./deploy
+        dest: ~/
+      changed_when: false
+  
+    - name: Check if flannel already installed
+      shell: kubectl get ds -n kube-system | grep kube-flannel-ds
+      register: flannel_status
+      changed_when: false
+        
+    - name: Install flannel
+  #      shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+      shell: kubectl apply -f "/root/deploy/kube-flannel.yml"
+  #      debug: msg="{{ flannel_status }}"
+      when: flannel_status.stdout == "" 
+        
+  become: yes

@@ -1,0 +1,33 @@
+---
+- block:
+    
+# - name: Join workers to cluster
+#   hosts: kube-workers
+#   gather_facts: no
+#   become: yes
+#   vars:
+#     master: "{{ groups['kube-masters'][0] }}"
+#     token: "{{ hostvars[master]['token'].stdout }}"
+  # 
+  # tasks:
+    # 
+    # - name: include vm details
+    #   include_vars: vm.yaml
+
+    # - debug: msg="{{  groups['masters'][0] }}"
+    # - debug: msg="{{  hostvars[groups['masters'][0]]['token'].stdout }}"
+    
+    - name: Check if worker already joined to master
+      stat: path=/etc/kubernetes/bootstrap-kubelet.conf
+      register: worker_joined
+    
+    - name: Join cluster
+      vars:
+         master: "{{ groups['masters'][0] }}"
+         token: "{{ hostvars[master]['token'].stdout }}"
+      shell: kubeadm join --discovery-token-unsafe-skip-ca-verification \
+                 --token {{ token }} \
+                {{ master.host_ip }}:6443
+      when:  not worker_joined.stat.exists
+          
+  become: yes

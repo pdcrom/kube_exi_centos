@@ -1,0 +1,24 @@
+---
+
+- name: Install tiller
+  shell: helm init
+  
+- name: Create tiller service account
+  shell: kubectl create serviceaccount --namespace kube-system tiller
+  ignore_errors: true
+
+- name: Create tiller clusterrolebinding
+  shell: kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+  ignore_errors: true
+  
+- name: Patch tiller deployment
+  shell: kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
+  ignore_errors: true
+  
+- name: Wait until tiller available again
+  shell: helm status
+  register: helm_status
+  retries: 30
+  delay: 10
+  until: "helm_status.stderr == 'Error: release name is required'"
+  ignore_errors: true

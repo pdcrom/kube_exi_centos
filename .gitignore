@@ -6,3 +6,4 @@ ansible/vsphere.yaml.paul
 ansible/admin.conf
 ansible/dashboard_token.txt
 *DS_Store*
+ansible/vars/vsphere.yml

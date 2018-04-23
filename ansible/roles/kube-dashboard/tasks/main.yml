@@ -1,0 +1,29 @@
+---
+- block:
+    
+    - name: Check if dashboard already installed
+      shell: kubectl get deployments --all-namespaces | grep kubernetes-dashboard
+      register: dashboard_status
+      changed_when: false
+      
+    - name: install dashboard
+#      shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+      shell: kubectl apply -f ~/deploy/kubernetes-dashboard.yml
+      when: dashboard_status.stdout == "" 
+      
+    - name: install dashboard user
+      shell: kubectl apply -f ~/deploy/kubernetes-dashboard-user.yml
+      when: dashboard_status.stdout == "" 
+ 
+    - name: get token for dashboard
+      shell: kubectl describe secret -n kube-system $(kubectl get secret -n kube-system | grep admin-user | awk '{print $1}')
+      register: dashboard_token
+      when: dashboard_status.stdout == "" 
+ 
+    - name: copy dashboard token to localhost
+      become: no
+      local_action: copy content={{ dashboard_token }} dest=./dashboard_token.txt
+      when: dashboard_status.stdout == "" 
+           
+  become: yes
+  

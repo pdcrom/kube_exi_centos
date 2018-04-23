@@ -1,0 +1,28 @@
+---
+## create a virtual machine on ESXI 
+- name: Create virtual machine on ESXi
+  delegate_to: localhost
+  connection: local
+  vmware_guest:
+    hostname:   '{{ vsphere_ip }}'
+    username:   '{{ vsphere_user}}'
+    password:   '{{ vsphere_passw}}'
+    datacenter: '{{ vsphere_dc}}'
+    folder:     '{{ vsphere_folder}}'
+    validate_certs: no
+    name: "{{ inventory_hostname }}"
+    state: poweredon
+    template: "{{ vsphere_template }}"
+    networks:
+      - name:    "{{ host_network }}"
+        ip:      "{{ host_ip }}"
+        netmask: "{{ host_netmask }}"
+        gateway: "{{ host_gateway }}"
+        domain:  "{{ host_domain }}"
+        dns_servers:
+          - "{{ host_dns }}"
+        type: static
+        wait_for_ip_address: yes
+    customization:
+      dns_servers:
+        - "{{ host_dns }}"

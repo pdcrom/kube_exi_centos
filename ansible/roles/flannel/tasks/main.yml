@@ -1,0 +1,17 @@
+---
+- block:
+    
+    - name: Check if flannel already installed
+      shell: kubectl get ds -n kube-system | grep kube-flannel-ds
+      register: flannel_status
+      changed_when: false
+      
+    - name: Install flannel
+#      shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+      shell: kubectl apply -f "/root/deploy/kube-flannel.yml"
+#      debug: msg="{{ flannel_status }}"
+      when: flannel_status.stdout == "" 
+          
+
+          
+  become: yes

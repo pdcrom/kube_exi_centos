@@ -1,0 +1,6 @@
+---
+vsphere_ip:     1.2.3.4
+vsphere_user:   admin
+vsphere_passw:  secret
+vsphere_dc:     mydc
+vsphere_folder: myfolder

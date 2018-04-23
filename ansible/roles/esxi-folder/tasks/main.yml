@@ -1,0 +1,12 @@
+---
+- name: Create a VM folder on given datacenter
+  delegate_to: localhost
+  vcenter_folder:
+    hostname:   '{{ vsphere_ip }}'
+    username:   '{{ vsphere_user}}'
+    password:   '{{ vsphere_passw}}'
+    datacenter: '{{ vsphere_dc}}'
+    folder_name: '{{ vsphere_folder}}'
+    folder_type: vm
+    state: present
+    validate_certs: no

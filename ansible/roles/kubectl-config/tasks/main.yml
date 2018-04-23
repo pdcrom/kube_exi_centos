@@ -1,0 +1,46 @@
+---
+    
+- name: get info from master
+  setup:
+  delegate_to: "{{ groups['masters'][0] }}"
+
+- name: remove admin.conf     
+  local_action: file
+  args:
+      path:  admin.conf 
+      state: absent
+  changed_when: false
+
+- name: copy config to localhost
+  become: yes
+  fetch:
+    src: /etc/kubernetes/admin.conf
+    dest: admin.conf
+    flat: yes
+  delegate_to: "{{ groups['masters'][0] }}"
+  changed_when: false
+
+- name: get master key from local ssh
+  shell: ssh-keygen -F kubernetes | grep "kubernetes ecdsa-sha2-nistp256" | awk '{print $3}'
+  register: sshkey
+  changed_when: false
+ 
+- name: remove master from knownhosts file
+  shell: ssh-keygen -R kubernetes -f ~/.ssh/known_hosts
+  when: sshkey.stdout != hostvars['localhost']['ansible_ssh_host_key_ecdsa_public'] 
+
+- name: add master to knownhosts file
+  shell: echo "kubernetes ecdsa-sha2-nistp256 {{ hostvars['localhost']['ansible_ssh_host_key_ecdsa_public'] }}"  >> ~/.ssh/known_hosts
+  when: sshkey.stdout != hostvars['localhost']['ansible_ssh_host_key_ecdsa_public'] 
+
+- name: get server from admin.config
+  shell: "kubectl config view | grep kubernetes:6443"
+  register: kube_server
+  changed_when: false
+  ignore_errors: true
+
+- debug: msg={{ kube_server.stdout.find("https://kubernetes:6443") }}
+
+- name: set kubernetes server to https://kubernetes:6443
+  shell: kubectl config set-cluster kubernetes --server=https://kubernetes:6443
+  when: kube_server.stdout.find("https://kubernetes:6443") == -1

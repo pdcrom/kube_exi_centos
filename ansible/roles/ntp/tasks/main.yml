@@ -1,0 +1,28 @@
+---
+    
+- block:
+  
+  - name: Set timezone to Europe/Amsterdam
+    timezone: name="{{ ntp_timezone }}"
+    
+  - name: Install NTP
+    yum: name=ntp state=installed
+    notify: restart_ntp
+    
+  - name: Add new NTP servers
+    lineinfile: dest=/etc/ntp.conf state=present line="server {{ item }}"
+    loop: "{{ ntp_servers }}"
+    notify: restart_ntp
+
+  - name: Get all NTP servers
+    shell: cat /etc/ntp.conf | grep "^server .*" | awk '{print $2}'
+    register: ntp_servers_old
+    changed_when: false
+   
+  - name: Remove NTP servers not specified
+    lineinfile: dest=/etc/ntp.conf state=absent regexp="^server {{ item }}.*"
+    loop: "{{ ntp_servers_old.stdout_lines }}"
+    when: not item in ntp_servers
+    notify: restart_ntp
+      
+  become: yes
