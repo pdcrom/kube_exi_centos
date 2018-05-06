@@ -7,3 +7,4 @@ create_cluster/admin.conf
 create_cluster/dashboard_token.txt
 create_cluster/vars/vsphere.yml
 my_pods/*
+*/._*
