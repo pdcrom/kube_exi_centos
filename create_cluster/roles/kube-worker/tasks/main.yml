@@ -14,8 +14,8 @@
     # - name: include vm details
     #   include_vars: vm.yaml
 
-    # - debug: msg="{{  groups['masters'][0] }}"
-    # - debug: msg="{{  hostvars[groups['masters'][0]]['token'].stdout }}"
+    - debug: msg="{{  groups['masters'][0] }}"
+    - debug: msg="{{  hostvars[groups['masters'][0]]['token'].stdout }}"
     
     - name: Check if worker already joined to master
       stat: path=/etc/kubernetes/bootstrap-kubelet.conf
@@ -24,10 +24,11 @@
     - name: Join cluster
       vars:
          master: "{{ groups['masters'][0] }}"
-         token: "{{ hostvars[master]['token'].stdout }}"
+         token:  "{{ hostvars[master]['token'].stdout }}"
+         ip:     "{{ hostvars[master]['host_ip'] }}"
       shell: kubeadm join --discovery-token-unsafe-skip-ca-verification \
                  --token {{ token }} \
-                {{ master.host_ip }}:6443
+                {{ ip }}:6443
       when:  not worker_joined.stat.exists
           
   become: yes

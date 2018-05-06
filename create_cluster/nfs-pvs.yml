@@ -1,0 +1,720 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-000 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm000 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-001 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm001 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-002 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm002 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-003 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm003 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-004 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm004 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-005 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pvrwm005 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-006 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm006 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-007 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm007 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-008 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm008 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-009 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm009 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-010 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm010 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-011 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm011 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-012 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm012 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-013 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm013 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-014 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm014 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-015 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm015 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-016 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm016 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-017 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm017 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-018 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm018 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwm-019 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pvrwm019 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-000 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv000 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-001 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv001 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-002 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv002 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-003 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv003 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-004 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv004 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-005 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: kube-nfs3
+  mountOptions:
+  - nfsvers=3
+  nfs:
+    path: /share/pv005 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-006 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv006 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-007 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv007 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-008 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv008 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-009 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv009 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-010 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv010 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-011 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv011 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-012 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv012 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-013 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv013 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-014 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv014 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-015 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv015 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-016 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv016 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-017 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv017 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-018 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv018 
+    server: 10.0.30.80
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-rwo-019 
+spec:
+  capacity:
+    storage: 5G
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle  
+  storageClassName: kube-nfs4
+  mountOptions:
+  - nfsvers=4.1
+  nfs:
+    path: /share/pv019 
+    server: 10.0.30.80

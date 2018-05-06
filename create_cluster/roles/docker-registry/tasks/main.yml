@@ -1,0 +1,10 @@
+---
+  ## docker registry on master node
+  - name: remove existing registry container
+    shell: docker rm -f registry
+    ignore_errors: true
+  
+  - name: Run docker registry on master node
+    shell: docker run -d --restart always -p 5000:5000 --name registry registry:2
+
+    

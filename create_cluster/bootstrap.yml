@@ -1,0 +1,45 @@
+## setup centos template
+##
+- name: Setup CentOS7 Template server
+  hosts: CentOS7_template
+  gather_facts: no
+  become: yes
+  tasks:
+      
+      - name: Add ansible user
+        user:
+          name: ansible 
+          
+      - name: Add to sudoers
+        lineinfile:
+          dest: /etc/sudoers.d/ansible
+          state: present
+          create: yes
+          line: "ansible ALL=(ALL) NOPASSWD: ALL"
+        
+      - name: copy ssh-key
+        authorized_key:
+          user: ansible
+          state: present
+          key: "{{ lookup('file', ssh_key) }}"
+          
+      - name: Install VMware tools
+        yum: name=open-vm-tools state=installed
+  
+      - name: Install Perl (needed for ansible vsphere plugin)
+        yum: name=perl state=installed
+        
+      - name: Disable SELinux
+        selinux: state=disabled policy=targeted
+        
+      - name: Reboot server
+        shell: reboot
+        
+      - name: Wait until reachable
+        wait_for_connection:
+          delay: 5
+          timeout: 300
+          
+      - name: Shutdown server
+        shell: shutdown -h now          
+          

@@ -1,9 +1,9 @@
 _old/*
 test/*
-ansible/.nfs*
-ansible/*.retry
-ansible/vsphere.yaml.paul
-ansible/admin.conf
-ansible/dashboard_token.txt
+*/.nfs*
+*/*.retry
 *DS_Store*
-ansible/vars/vsphere.yml
+create_cluster/admin.conf
+create_cluster/dashboard_token.txt
+create_cluster/vars/vsphere.yml
+my_pods/*

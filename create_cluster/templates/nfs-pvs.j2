@@ -1,0 +1,54 @@
+{% for id in range(0,share_RWM_count) -%}  
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ share_prefix }}-rwm-{{ '%03d' | format(id) }} 
+spec:
+  capacity:
+    storage: {{ storage_capacity }}
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+{%- if id >5 %}  
+  storageClassName: {{ storage_class }}4
+  mountOptions:
+  - nfsvers=4.1
+{% else %}
+
+  storageClassName: {{ storage_class }}3
+  mountOptions:
+  - nfsvers=3
+{% endif %}
+  nfs:
+    path: {{ share_mount}}/{{ share_prefix }}rwm{{ '%03d' | format(id) }} 
+    server: {{ host_ip }}
+{% endfor %}
+{% for id in range(0,share_RWO_count) -%}  
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ share_prefix }}-rwo-{{ '%03d' | format(id) }} 
+spec:
+  capacity:
+    storage: {{ storage_capacity }}
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+{%- if id >5 %}  
+  storageClassName: {{ storage_class }}4
+  mountOptions:
+  - nfsvers=4.1
+{% else %}
+
+  storageClassName: {{ storage_class }}3
+  mountOptions:
+  - nfsvers=3
+{% endif %}
+  nfs:
+    path: {{ share_mount}}/{{ share_prefix }}{{ '%03d' | format(id) }} 
+    server: {{ host_ip }}
+{% endfor %}

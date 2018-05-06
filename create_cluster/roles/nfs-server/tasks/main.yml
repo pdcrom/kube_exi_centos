@@ -1,0 +1,68 @@
+---  
+  - name: Install nfs-utils
+    yum: name=nfs-utils state=installed
+
+  - firewalld:
+        service: "{{ item }}"
+        permanent: true
+        state: enabled
+        immediate: yes
+    with_items: 
+        - mountd
+        - nfs
+        - rpc-bind    
+
+  - debug: msg="{{ share_user }}"
+  - name: Create default kubepod user
+    user:
+      name: "{{ share_user }}"
+      uid:  "{{ share_uid }}"
+      state: present
+
+  - name: Create default kubepod group
+    group:
+      name: "{{ share_group }}"
+      gid: "{{ share_gid }}"
+      state: present
+            
+  - name: create share folder
+    file:
+      path: /share
+      state: directory 
+        
+  - name: create persistent volume shares for dynamic allocation to pods
+    file:
+      path: "/share/pv{{ item }}"
+      state: directory
+      owner: "{{ share_user }}"
+      group: "{{ share_group }}"
+    with_sequence: count="{{ share_count }}" format="%03d"
+                
+  # create the export file, accessible by subnet
+  - name: create nfs export file for persistent volume shares
+    lineinfile:
+       dest: /etc/exports
+       state: present
+       create: yes
+       line: "/share/pv{{ item }} {{ subnet }}(rw,no_root_squash)"
+    with_sequence: count="{{ share_count }}" format="%03d"
+
+  - name: create persistent volume shares for init files of pods
+    file:
+      path: "/share/init"
+      state: directory
+      owner: "{{ share_user }}"
+      group: "{{ share_group }}" 
+
+  - name: create nfs export file for init share
+    lineinfile:
+        dest: /etc/exports
+        state: present
+        create: yes
+        line: "/share/init {{ subnet }}(rw,no_root_squash)"
+  
+  - name: export the shares
+    shell: exportfs -r
+
+  - name: Start nfs server
+    service: name=nfs-server state=started enabled=yes

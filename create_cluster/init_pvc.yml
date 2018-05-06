@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: init
+spec:
+  accessModes:
+  - ReadWriteMany  
+  resources:
+     requests:
+       storage: 1G
+  storageClassName: kube-nfs.init

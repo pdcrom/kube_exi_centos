@@ -1,0 +1,122 @@
+## create a kubernetes cluster on VMware ESXi
+
+- name: Create virtual machines
+  hosts: kubernetes
+  gather_facts: no
+  vars_files:
+    - vars/vsphere.yml
+     
+  pre_tasks:
+      - include_role: name=esxi-folder
+        when: inventory_hostname in groups.masters
+  
+      - include_role: name=esxi-vm
+      
+      - name: Wait until reachable
+        wait_for_connection:
+          delay: 5
+          timeout: 300
+
+- name: Configure NFS server
+  hosts: kube-nfs
+  become: yes
+  gather_facts: no     
+  roles:
+   - nfs-server
+                       
+- name: Configure Kubernetes nodes
+  hosts: master, workers
+  gather_facts: no
+  become: yes  
+  roles:
+    - ntp      
+    - docker
+    - kubernetes
+    - nfs-client
+             
+- name: Configure Kubernetes master
+  hosts: masters
+  gather_facts: no
+  become: yes
+  roles:
+      - kube-master
+        
+- name: Configure Kubernetes workers
+  hosts: workers
+  gather_facts: no
+  roles:
+      - kube-worker
+
+# helm on machine running ansible is required
+# setup localhost for kubctl & helm
+- name: Setup localhost for kubectl usage
+  hosts: localhost
+  connection: local
+  environment:
+    KUBECONFIG: "{{ lookup('env','PWD') }}/admin.conf"
+  tasks:
+     - include_role: name=kubectl-config 
+     - include_role: name=tiller
+
+- name: Reboot all hosts
+  hosts: kubernetes
+  gather_facts: no
+  tasks:
+      - name: Reboot server
+        shell: reboot
+        ignore_errors: true
+        
+      - name: Wait until reachable
+        wait_for_connection:
+          delay: 5
+          timeout: 300
+
+- name: Configure Kubernetes master
+  hosts: masters
+  gather_facts: no
+  become: yes
+  roles:
+      - docker-registry
+
+- name: Create NFS PVs
+  hosts: kube-nfs
+  connection: local
+  environment:
+    KUBECONFIG: "{{ lookup('env','PWD') }}/admin.conf"
+      
+  tasks: 
+    - template:
+        src: templates/nfs-pvs.j2
+        dest: nfs-pvs.yml
+
+    - name: create PVs
+      shell: "kubectl apply -f {{ item }}"
+      with_items:
+          - nfs-pvs.yml
+          - init_pv.yml
+          - init_pvc.yml
+    
+# install some pods
+- name: Setup localhost for kubectl usage
+  hosts: localhost
+  connection: local
+  environment:
+    KUBECONFIG: "{{ lookup('env','PWD') }}/admin.conf"
+  tasks:
+          
+    - include_role:
+        name: kube-dashboard
+    
+    - name: install ingress controller
+      shell: helm install stable/nginx-ingress --namespace kube-system --set rbac.create=true
+      ignore_errors: yes
+      retries: 30
+      timeout: 10
+      
+      
+    
+                
+                
+                
+
+     
