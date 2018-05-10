@@ -14,7 +14,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm000 
+    path: /share/pv-rwm-000 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -32,7 +32,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm001 
+    path: /share/pv-rwm-001 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -50,7 +50,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm002 
+    path: /share/pv-rwm-002 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -68,7 +68,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm003 
+    path: /share/pv-rwm-003 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -86,7 +86,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm004 
+    path: /share/pv-rwm-004 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -104,7 +104,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pvrwm005 
+    path: /share/pv-rwm-005 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -122,7 +122,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm006 
+    path: /share/pv-rwm-006 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -140,7 +140,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm007 
+    path: /share/pv-rwm-007 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -158,7 +158,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm008 
+    path: /share/pv-rwm-008 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -176,7 +176,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm009 
+    path: /share/pv-rwm-009 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -194,7 +194,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm010 
+    path: /share/pv-rwm-010 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -212,7 +212,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm011 
+    path: /share/pv-rwm-011 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -230,7 +230,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm012 
+    path: /share/pv-rwm-012 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -248,7 +248,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm013 
+    path: /share/pv-rwm-013 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -266,7 +266,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm014 
+    path: /share/pv-rwm-014 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -284,7 +284,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm015 
+    path: /share/pv-rwm-015 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -302,7 +302,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm016 
+    path: /share/pv-rwm-016 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -320,7 +320,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm017 
+    path: /share/pv-rwm-017 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -338,7 +338,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm018 
+    path: /share/pv-rwm-018 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -356,7 +356,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pvrwm019 
+    path: /share/pv-rwm-019 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -374,7 +374,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv000 
+    path: /share/pv-rwo-000 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -392,7 +392,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv001 
+    path: /share/pv-rwo-001 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -410,7 +410,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv002 
+    path: /share/pv-rwo-002 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -428,7 +428,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv003 
+    path: /share/pv-rwo-003 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -446,7 +446,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv004 
+    path: /share/pv-rwo-004 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -464,7 +464,7 @@ spec:
   mountOptions:
   - nfsvers=3
   nfs:
-    path: /share/pv005 
+    path: /share/pv-rwo-005 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -482,7 +482,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv006 
+    path: /share/pv-rwo-006 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -500,7 +500,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv007 
+    path: /share/pv-rwo-007 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -518,7 +518,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv008 
+    path: /share/pv-rwo-008 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -536,7 +536,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv009 
+    path: /share/pv-rwo-009 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -554,7 +554,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv010 
+    path: /share/pv-rwo-010 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -572,7 +572,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv011 
+    path: /share/pv-rwo-011 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -590,7 +590,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv012 
+    path: /share/pv-rwo-012 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -608,7 +608,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv013 
+    path: /share/pv-rwo-013 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -626,7 +626,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv014 
+    path: /share/pv-rwo-014 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -644,7 +644,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv015 
+    path: /share/pv-rwo-015 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -662,7 +662,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv016 
+    path: /share/pv-rwo-016 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -680,7 +680,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv017 
+    path: /share/pv-rwo-017 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -698,7 +698,7 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv018 
+    path: /share/pv-rwo-018 
     server: 10.0.30.80
 ---
 apiVersion: v1
@@ -716,5 +716,5 @@ spec:
   mountOptions:
   - nfsvers=4.1
   nfs:
-    path: /share/pv019 
+    path: /share/pv-rwo-019 
     server: 10.0.30.80

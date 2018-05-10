@@ -30,22 +30,39 @@
       path: /share
       state: directory 
         
-  - name: create persistent volume shares for dynamic allocation to pods
+  - name: create persistent volume shares (rwo) for dynamic allocation to pods
     file:
-      path: "/share/pv{{ item }}"
+      path: "/share/pv-rwo-{{ item }}"
       state: directory
       owner: "{{ share_user }}"
       group: "{{ share_group }}"
-    with_sequence: count="{{ share_count }}" format="%03d"
-                
+    with_sequence: count="{{ share_RWO_count }}" format="%03d"
+
+  - name: create persistent volume shares (rwm) for dynamic allocation to pods
+    file:
+      path: "/share/pv-rwm-{{ item }}"
+      state: directory
+      owner: "{{ share_user }}"
+      group: "{{ share_group }}"
+    with_sequence: count="{{ share_RWO_count }}" format="%03d"
+                    
   # create the export file, accessible by subnet
   - name: create nfs export file for persistent volume shares
     lineinfile:
        dest: /etc/exports
        state: present
        create: yes
-       line: "/share/pv{{ item }} {{ subnet }}(rw,no_root_squash)"
-    with_sequence: count="{{ share_count }}" format="%03d"
+       line: "/share/pv-rwo-{{ item }} {{ subnet }}(rw,no_root_squash)"
+    with_sequence: count="{{ share_RWO_count }}" format="%03d"
+
+ # create the export file, accessible by subnet
+  - name: create nfs export file for persistent volume shares
+    lineinfile:
+       dest: /etc/exports
+       state: present
+       create: yes
+       line: "/share/pv-rwm-{{ item }} {{ subnet }}(rw,no_root_squash)"
+    with_sequence: count="{{ share_RWM_count }}" format="%03d"
 
   - name: create persistent volume shares for init files of pods
     file:
